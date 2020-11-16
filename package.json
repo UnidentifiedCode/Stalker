@@ -6,7 +6,7 @@
   "author": "HaZZe",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^11.3.2",
+    "discord.js": "^12.3.2",
     "moment": "^2.24.0",
     "superagent": "^6.1.0"
   }
