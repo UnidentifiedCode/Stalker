@@ -37,7 +37,7 @@ client.on("message", async message => {
   }
   
   if(command === "say") {
-      if(!message.member.hasPermission(["MANAGE_MESSAGES", "ADMINISTRATOR"])) return message.channel.send("You can not use this command!")
+      if(!message.author.id == 422408402849890304) return message.channel.send("Insufficient permision!")
     
   let argsresult;
   let mChannel = message.mentions.channels.first()
