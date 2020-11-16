@@ -114,5 +114,5 @@ client.on('guildMemberRemove', member => {
   lchannel.send(`\`\`${member.user.tag}(${member.user.id})\`\` left the server.`);
 });
 
-client.login(token);
-//client.login(process.env.BOT_TOKEN)
+//client.login(token);
+client.login(process.env.BOT_TOKEN)
