@@ -35,6 +35,22 @@ client.on("message", async message => {
         m.edit(`${response}: Bot Latency: \`${ping}\``)
     })
   }
+  
+  if(command === "say") {
+      if(!message.member.hasPermission(["MANAGE_MESSAGES", "ADMINISTRATOR"])) return message.channel.send("You can not use this command!")
+    
+  let argsresult;
+  let mChannel = message.mentions.channels.first()
+
+  message.delete()
+  if(mChannel) {
+      argsresult = args.slice(1).join(" ")
+      mChannel.send(argsresult)
+  } else {
+      argsresult = args.join(" ")
+      message.channel.send(argsresult)
+  }
+  }
 
   const cchannel = client.channels.cache.find(channel => channel.id === chan.checks)
   const echannel = client.channels.cache.find(channel => channel.id === chan.errors)
