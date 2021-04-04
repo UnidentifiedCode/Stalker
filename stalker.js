@@ -20,7 +20,7 @@ client.on("message", async message => {
     .setColor("#000000")
     .setThumbnail(client.user.displayAvatarURL)
     .addField(`**${prefix}ping**`, `Check bot ping.`)
-    .addField(`**${prefix}check <option> <id/ip>**`, `Options: \n\`\`user\`\` - check user \n\`\`ip\`\` - check IP`)
+    .addField(`**${prefix}check <option> <id/ip>**`, `Options: \n\`user\` - check user \n\`ip\` - check IP`)
     .setTimestamp()
     .setFooter(`Bot prefix is ${prefix}`, client.user.avatarURL());
     message.channel.send(botHelp);
@@ -56,7 +56,7 @@ client.on("message", async message => {
   const echannel = client.channels.cache.find(channel => channel.id === chan.errors)
 
   if(command === "check"){
-    if(!args[0]) return message.channel.send(`Please provide an option: \`\`user\`\` or \`\`ip\`\``)
+    if(!args[0]) return message.channel.send(`Please provide an option: \`user\` or \`ip\``)
     if(args[0] == "user") {
       if(!args[1]) return message.channel.send(`Please provide an user ID.`)
       client.users.fetch(args[1])
@@ -75,12 +75,12 @@ client.on("message", async message => {
         .setFooter(`Bot prefix is ${prefix}`, client.user.avatarURL());
         message.channel.send(userInfo);
 
-        cchannel.send(`User \`\`${message.author.tag}(${message.author.id})\`\` checked \`\`USER\`\` : \`\`${User.tag}(${args[1]})\`\``)
+        cchannel.send(`User \`${message.author.tag}(${message.author.id})\` checked \`USER\` : \`${User.tag}(${args[1]})\``)
       })
       .catch((err) => {
           // Do something with the Error object, for example, console.error(err);
           console.error("[Error] " + err);
-          echannel.send(`Error \`\`${err}\`\``)
+          echannel.send(`Error \`${err}\``)
       })
     }
     if(args[0] == "ip") {
@@ -114,20 +114,20 @@ client.on("message", async message => {
       .addField("HOSTING", ip.body.hosting, true)     
       .setFooter(`Bot prefix is ${prefix}`, client.user.avatarURL());
       message.channel.send(ipEmbed)
-      cchannel.send(`User \`\`${message.author.tag}(${message.author.id})\`\` checked \`\`IP\`\` : \`\`${args[1]}\`\``)
+      cchannel.send(`User \`${message.author.tag}(${message.author.id})\` checked \`IP\` : \`${args[1]}\``)
     }
-    else return message.channel.send(`Please provide an option: \`\`user\`\` or \`\`ip\`\``);
+    else return message.channel.send(`Please provide an option: \`user\` or \`ip\``);
   }
 });
 
 client.on('guildMemberAdd', member => {
   const jchannel = client.channels.cache.find(channel => channel.id === chan.joins)
-  jchannel.send(`\`\`${member.user.tag}(${member.user.id})\`\` joined the server.`);
+  jchannel.send(`\`${member.user.tag}(${member.user.id})\` joined the server.`);
 });
 
 client.on('guildMemberRemove', member => {
    const lchannel = client.channels.cache.find(channel => channel.id === chan.leaves)
-  lchannel.send(`\`\`${member.user.tag}(${member.user.id})\`\` left the server.`);
+  lchannel.send(`\`${member.user.tag}(${member.user.id})\` left the server.`);
 });
 
 //client.login(token);
